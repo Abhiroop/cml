@@ -1,0 +1,58 @@
+## cml
+
+Concurrent ML primitives implemented in Haskell. Designed by Avik Chaudhuri and maintained by Ben Franksen(not sure if maintained any longer). Uploaded on github for ease of browsing.
+
+## README
+
+This Haskell library implements higher-order-concurrency like in Concurrent ML.
+
+See "A Concurrent ML Library in Concurrent Haskell" by Avik Chaudhuri
+(avik@cs.ucsc.edu). The original code as well as the papers can be
+found at <http://www.cs.umd.edu/~avik/projects/cmllch/>.
+
+User-visible changes to the original code:
+
+* wrapped it up as a cabal package
+* gave it a proper place in the module hierarchy
+  (the module name might not be optimal, please suggest improvements)
+* added an export list
+* added haddock docs (large parts taken literally from the papers)
+* 'Event' and 'Channel' are now abstract types
+* renamed 'new' to 'channel'
+* added 'Eq' instance for 'Channel'
+
+Internal changes include:
+
+* use layout instead of braces where appropriate
+* use ($) instead of parentheses where appropriate
+* reformatted most of the code
+* added an optimization (see page 11 of the paper)
+
+Installation
+------------
+
+If you have cabal-install installed, just say
+
+  cabal update && cabal install cml
+
+This will install the latest version from hackage.
+
+If you do not yet have cabal-install, get it from hackage and install it
+manually, see http://hackage.haskell.org/trac/hackage/wiki/CabalInstall.
+
+Tests
+-----
+
+A very minimal test program is part of the package. To compile it, run
+
+  ghc --make test
+
+You can give the number of iterations as an argument to the resulting 'test'
+executable (the default is 1).
+
+Acknowledgements
+----------------
+
+* Avik Chaudhuri for providing the initial code and the pioneering work.
+* Brian Lewis for code cleanup & cabal improvements.
+* Derek Elkins for Eq instance and useful suggestions.
